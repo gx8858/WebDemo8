@@ -8,7 +8,7 @@
 		<property name="password">123456</property>
 	</default-config>
 		
-	<!-- 查找指定名称空间 -->
+	<!-- 查找指定名称空间 （注意：jdbcUrl必须加?useUnicode=true&amp;characterEncoding=UTF-8要不加可能会出现中文乱码情况）-->
 	<named-config name="myoracle">
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="jdbcUrl">jdbc:mysql:///day18?useUnicode=true&amp;characterEncoding=UTF-8</property>
