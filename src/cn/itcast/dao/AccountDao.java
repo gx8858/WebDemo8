@@ -14,6 +14,40 @@ import cn.itcast.vo.Account;
 
 public class AccountDao {
 	
+	@Test
+	public void run() {
+		update(1000,"美美");
+	}
+	
+	
+	/**
+	 * 转账的dao（事物需要加在service层示例）
+	 * @param money
+	 * @param username
+	 */
+	public void update(double money,String username){
+		// 获取链接
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			// 获取链接（从线程中获取）
+			conn = MyJdbcUtil3.getConnection();
+			String sql = "update t_account set money = money - ? where username = ?";
+			// 预编译sql
+			stmt = conn.prepareStatement(sql);
+			//设置值
+			stmt.setDouble(1, money);
+			stmt.setString(2, username);
+			// 执行
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+//			 MyJdbcUtil3.release(stmt, conn);  不能在这里写这句话，如果写了在service中一执行这个update就会被释放掉
+		}
+	}
+	
+	
 	/**
 	 * 完成修改的操作
 	 * @param ac
@@ -41,40 +75,7 @@ public class AccountDao {
 		}
 	}
 	
-	@Test
-	public void run() {
-		update(1000,"美美");
-	}
-	
-	/**
-	 * 转账的dao
-	 * @param money
-	 * @param username
-	 */
-	public void update(double money,String username){
-		// 获取链接
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		try {
-			// 获取链接（从线程中获取）
-			conn = MyJdbcUtil3.getConnection();
-			String sql = "update t_account set money = money - ? where username = ?";
-			// 预编译sql
-			stmt = conn.prepareStatement(sql);
-			//设置值
-			stmt.setDouble(1, money);
-			stmt.setString(2, username);
-			// 执行
-			stmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-//			 MyJdbcUtil3.release(stmt, conn);  不能在这里写这句话，如果写了在service中一执行这个update就会被释放掉
-		}
-	}
 
-	
-	
 	/**
 	 * 添加的操作
 	 * @param ac
