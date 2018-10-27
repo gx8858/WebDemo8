@@ -22,7 +22,7 @@ import cn.itcast.vo.Account;
 
 
 /**
- * DButil测试
+ * DButil测试（ResultsetHandler的实现类）
  * @author Administrator
  */
 public class DbutilDemo1 {
