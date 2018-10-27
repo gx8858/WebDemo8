@@ -24,11 +24,15 @@ import cn.itcast.vo.Account;
 /**
  * DButil测试
  * @author Administrator
- *
  */
 public class DbutilDemo1 {
 	
-	
+	/**
+	 * 把一条记录封装到JavaBean对象中
+	 * @throws SQLException
+	 * 结果为：
+	 * Account [id=2, username=美美, money=1000.0]
+	 */
 	@Test
 	public void run1() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -39,6 +43,12 @@ public class DbutilDemo1 {
 	/**
 	 * 把JavaBean保存到List集合中
 	 * @throws SQLException
+	 * 结果为：
+	 * Account [id=1, username=聪聪, money=18000.0]
+		Account [id=2, username=美美, money=1000.0]
+		Account [id=3, username=小凤, money=10000.0]
+		Account [id=4, username=赵刘, money=10000.0]
+		Account [id=5, username=天启, money=10000.0]
 	 */
 	@Test
 	public void run2() throws SQLException{
@@ -50,7 +60,12 @@ public class DbutilDemo1 {
 	}
 	
 	
-	
+	/**
+	 * 把一条记录封装到数组中
+	 * @throws SQLException
+	 * 结果为：
+	 * [2, 美美, 1000.0]
+	 */
 	@Test
 	public void run3() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -59,6 +74,16 @@ public class DbutilDemo1 {
 	}
 	
 	
+	/**
+	 * 一条记录封装到数组中，把数组存放在集合中
+	 * @throws SQLException
+	 * 结果为：
+	 * [1, 聪聪, 18000.0]
+		[2, 美美, 1000.0]
+		[3, 小凤, 10000.0]
+		[4, 赵刘, 10000.0]
+		[5, 天启, 10000.0]
+	 */
 	@Test
 	public void run4() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -68,7 +93,12 @@ public class DbutilDemo1 {
 		}
 	}
 	
-	
+	/**
+	 * 一条记录封装到Map集合
+	 * @throws SQLException
+	 * 结果为：
+	 * {id=2, username=美美, money=1000.0}
+	 */
 	@Test
 	public void run5() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -76,6 +106,19 @@ public class DbutilDemo1 {
 		System.out.println(map);
 	}
 	
+	
+	/**
+	 * 一条记录封装到Map集合，把Map集合存放到集合中
+	 * @throws SQLException
+	 * 结果为：
+	 * [
+	 *  {id=1, username=聪聪, money=18000.0}, 
+	 *  {id=2, username=美美, money=1000.0}, 
+	 *  {id=3, username=小凤, money=10000.0}, 
+	 *  {id=4, username=赵刘, money=10000.0}, 
+	 *  {id=5, username=天启, money=10000.0}
+	 * ]
+	 */
 	@Test
 	public void run6() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -84,6 +127,11 @@ public class DbutilDemo1 {
 	}
 	
 	
+	/**
+	 * 封装count(*) 单行单列数据
+	 * @throws SQLException
+	 * 结果为：5
+	 */
 	@Test
 	public void run7() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -91,6 +139,18 @@ public class DbutilDemo1 {
 		System.out.println(obj);
 	}
 	
+	
+	/**
+	 * 查询是一列数据，把一列数据封装到集合中。
+	 * new ColumnListHandler()可以有参数也可没有，自己定
+	 * @throws SQLException
+	 * 结果为：
+	 * 18000.0
+		1000.0
+		10000.0
+		10000.0
+		10000.0
+	 */
 	@Test
 	public void run8() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
@@ -101,6 +161,19 @@ public class DbutilDemo1 {
 	}
 	
 	
+	/**
+	 * 把一条记录封装到一个map集合，把该map集合又存放在另一个map集合中。
+	 * new KeyedHandler()可以有参数也可没有，自己定
+	 * @throws SQLException
+	 * 结果为：
+	 * { 
+	 * 	赵刘={id=4, username=赵刘, money=10000.0}, 
+	 * 	天启={id=5, username=天启, money=10000.0}, 
+	 * 	小凤={id=3, username=小凤, money=10000.0}, 
+	 * 	聪聪={id=1, username=聪聪, money=18000.0}, 
+	 * 	美美={id=2, username=美美, money=1000.0}
+	 * }
+	 */
 	@Test
 	public void run9() throws SQLException{
 		QueryRunner runner = new QueryRunner(MyJdbcUtil2.getDataSource());
