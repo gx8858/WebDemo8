@@ -13,7 +13,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  */
 public class MyJdbcUtil3 {
 	
-	public static ComboPooledDataSource dataSource = new ComboPooledDataSource("myoracle");
+//	public static ComboPooledDataSource dataSource = new ComboPooledDataSource("myoracle");
+	public static ComboPooledDataSource dataSource = new ComboPooledDataSource();
 	public static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
 	
 	/**
