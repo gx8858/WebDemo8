@@ -30,10 +30,10 @@ public class ParameterMetaDataDemo {
 			ParameterMetaData metaData  = stmt.getParameterMetaData();
 			// 获取参数的个数
 			int count = metaData.getParameterCount();
-			System.out.println("参数的个数是："+count);
+			System.out.println("参数的个数是："+count);   // 参数的个数是：3
 			
 			String msg = metaData.getParameterTypeName(1);
-			System.out.println("参数的类型："+msg);
+			System.out.println("参数的类型："+msg);      // 参数的类型：VARCHAR  （类型获取的不准确）
 			
 		} catch (Exception e) {
 			e.printStackTrace();
