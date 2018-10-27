@@ -19,7 +19,7 @@ public class AccountService {
 	
 	
 	/**
-	 * 从谁给谁转多少钱
+	 * 从谁给谁转多少钱（事物需要加在service层示例）
 	 * @param from
 	 * @param to
 	 * @param money
