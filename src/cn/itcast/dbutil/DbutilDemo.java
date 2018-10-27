@@ -14,7 +14,6 @@ import cn.itcast.vo.Account;
 /**
  * DButil≤‚ ‘
  * @author Administrator
- *
  */
 public class DbutilDemo {
 	
