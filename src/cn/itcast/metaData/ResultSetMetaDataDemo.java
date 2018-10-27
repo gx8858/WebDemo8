@@ -11,7 +11,7 @@ import org.junit.Test;
 import cn.itcast.utils.MyJdbcUtil2;
 
 /**
- * 参数元数据
+ * 结果集元数据
  * @author Administrator
  *
  */
@@ -38,11 +38,22 @@ public class ResultSetMetaDataDemo {
 			System.out.println(count);
 			for (int i = 1; i <= count; i++) {
 				// 获取列的名称
-			System.out.println(metaData.getColumnName(i));
+				System.out.println(metaData.getColumnName(i));
 				
 				// 获取列的类型
 				System.out.println(metaData.getColumnTypeName(i));
 			}
+		
+			/**
+			 * 结果：
+			 * 3
+				id
+				INT
+				username
+				VARCHAR
+				money
+				DOUBLE
+			 */
 			
 		} catch (Exception e) {
 			e.printStackTrace();
